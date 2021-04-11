@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="goods-list">
+    </div>
+    <script>
+        const goods = [
+            {
+                id_product: 123,
+                product_name: "Ноутбук",
+                price: 45600,
+                quantity: 1
+            },
+            {
+                id_product: 456,
+                product_name: "Мышка",
+                price: 1000,
+                quantity: 3
+            }
+        ];
+        const goodsBlock = document.querySelector('.goods-list');
+        let HTMLString = ''; // до цикла
+        function init() {
+            let button = document.querySelector(".btn")
+            button.onclick = handleButtonClick(goodsBlock);
+        }
+        function handleButtonClick(a) {
+            const goods = [];
+            const HTMLString = "Корзина пуста";
+            a.innerHTML = HTMLString
+
+        }
+        goods.forEach((good) => {
+            HTMLString += `<div class="good">
+                          <div><b>Наименование:</b>${good.product_name}</div>
+                          <div><b>Цена за штуку:</b>${good.price}</div>
+                          <div><b>Количество:</b>${good.quantity}</div>
+                      </div>`
+        });
+        if (goods.length) { goodsBlock.innerHTML = HTMLString } // после цикла
+    </script>
+    <button class="btn" onclick="init()">Очистить корзину</button>
+    <style>
+        .good {
+            border: 1px solid #000;
+            margin-bottom: 5px;
+            background: rgb(13, 189, 13);
+        }
+
+        .btn {
+            border: 1px solid #000;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+
+</body>
+
+</html>
